@@ -1,15 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import { createStore } from "redux";
 
-import Layout from "./Layout";
+const reducer = function(state, action) {
+    if(action.type === "INC") {
+        return state+action.payload;
+    }
+    if(action.type === "DEC") {
+        return state-action.payload;
+    }
+    return state;
+};
 
-const app = document.getElementById('app');
+const store = createStore(reducer, 0);
 
-ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={Layout}>
-            <IndexRoute component={Layout}></IndexRoute>
-        </Route>
-    </Router>,
-app);
+store.subscribe(() => {
+   console.log("Store changed", store.getState());
+});
+
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "INC", payload: 1000});
+store.dispatch({type: "INC", payload: 1});
+store.dispatch({type: "DEC", payload: 999});
