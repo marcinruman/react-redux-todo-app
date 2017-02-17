@@ -14,7 +14,7 @@ const userReducer = (state={}, action) => {
     return state;
 };
 
-const tweetsReducer = (state, action) => {
+const tweetsReducer = (state={}, action) => {
     return state;
 };
 
@@ -39,3 +39,4 @@ store.subscribe(() => {
 
 store.dispatch({type: "CHANGE_NAME", payload: "Will"});
 store.dispatch({type: "CHANGE_AGE", payload: 36});
+store.dispatch({type: "CHANGE_AGE", payload: 37});
