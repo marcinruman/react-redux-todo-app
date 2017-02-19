@@ -10,6 +10,10 @@ const reducer = (initialState=0, action) => {
             initialState = initialState - 1;
             break;
         }
+        case "E": {
+            throw new Error("AAAA!!!!!");
+            break;
+        }
     }
     return initialState;
 };
@@ -19,7 +23,16 @@ const logger = (store) => (next) => (action) => {
     next(action);
 };
 
-const middleware = applyMiddleware(logger);
+const error = (store) => (next) => (action) => {
+    try {
+        next(action);
+    } catch(e) {
+        console.log("AHHHHH!", e);
+    }
+
+};
+
+const middleware = applyMiddleware(logger, error);
 
 const store = createStore(reducer, 1, middleware);
 
@@ -34,3 +47,5 @@ store.dispatch({type: "INC"});
 store.dispatch({type: "INC"});
 store.dispatch({type: "DEC"});
 store.dispatch({type: "DEC"});
+store.dispatch({type: "E"});
+
