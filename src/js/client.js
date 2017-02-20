@@ -1,51 +1,18 @@
 import { applyMiddleware, createStore } from "redux";
+import logger from "redux-logger";
 
-const reducer = (initialState=0, action) => {
-    switch(action.type) {
-        case "INC": {
-            initialState = initialState + 1;
-            break;
-        }
-        case "DEC": {
-            initialState = initialState - 1;
-            break;
-        }
-        case "E": {
-            throw new Error("AAAA!!!!!");
-            break;
-        }
-    }
-    return initialState;
+const reducer = (state={}, action) => {
+    return state;
 };
 
-const logger = (store) => (next) => (action) => {
-    console.log("action fired!", action);
-    next(action);
-};
-
-const error = (store) => (next) => (action) => {
-    try {
-        next(action);
-    } catch(e) {
-        console.log("AHHHHH!", e);
-    }
-
-};
-
-const middleware = applyMiddleware(logger, error);
-
-const store = createStore(reducer, 1, middleware);
+const middleware = applyMiddleware(logger());
+const store = createStore(reducer, middleware);
 
 store.subscribe(() => {
     console.log("store changed", store.getState());
 });
 
 
+store.dispatch({type: "FOO"});
 
-store.dispatch({type: "INC"});
-store.dispatch({type: "INC"});
-store.dispatch({type: "INC"});
-store.dispatch({type: "DEC"});
-store.dispatch({type: "DEC"});
-store.dispatch({type: "E"});
 
