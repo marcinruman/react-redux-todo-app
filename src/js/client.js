@@ -1,24 +1,13 @@
-import { createStore } from "redux";
+import { applyMiddleware,createStore } from "redux";
+import logger from "redux-logger";
 import todoApp from "./reducers/reducers";
 import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './actions/actions';
 
-let store = createStore(todoApp);
 
-// Log the initial state
-console.log(store.getState());
-
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-    console.log(store.getState())
-);
+const middleware = applyMiddleware(logger());
+const store = createStore(todoApp, middleware);
 
 // Dispatch some actions
 store.dispatch(addTodo('Learn about actions'));
-store.dispatch(addTodo('Learn about reducers'));
-store.dispatch(addTodo('Learn about store'));
-store.dispatch(toggleTodo(0));
-store.dispatch(toggleTodo(1));
-store.dispatch(toggleTodo(2));
 store.dispatch(toggleTodo(0));
 store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED));
