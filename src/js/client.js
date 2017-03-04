@@ -1,13 +1,11 @@
-import { applyMiddleware,createStore } from "redux";
-import logger from "redux-logger";
-import todoApp from "./reducers/reducers";
-import { addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters } from './actions/actions';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
+import Layout from "./Layout";
 
-const middleware = applyMiddleware(logger());
-const store = createStore(todoApp, middleware);
+const app = document.getElementById('app');
 
-// Dispatch some actions
-store.dispatch(addTodo('Learn about actions'));
-store.dispatch(toggleTodo(0));
-store.dispatch(setVisibilityFilter(VisibilityFilters.SHOW_COMPLETED));
+ReactDOM.render(<Provider store="">
+        <Layout />
+    </Provider>, app);
