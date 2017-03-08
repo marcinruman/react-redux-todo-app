@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 @connect((store) => {
     return {
-        foo: 1
+        visibilityFilter: store.visibilityFilter
     }
 })
 export default class Layout extends React.Component {
@@ -11,7 +11,7 @@ export default class Layout extends React.Component {
         return (
             <div>
                 <h1>Hello World!</h1>
-                <p>This is a react-redux-todo-app. {this.props.foo}</p>
+                <p>This is a react-redux-todo-app. {this.props.visibilityFilter}</p>
             </div>
         );
     }
