@@ -1,9 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 
-@connect((store) => {
+
+const getVisibleTodos = (todos, filter) => {
+    switch (filter) {
+        case 'SHOW_ALL':
+            return todos;
+        case 'SHOW_COMPLETED':
+            return todos.filter(t => t.completed);
+        case 'SHOW_ACTIVE':
+            return todos.filter(t => !t.completed);
+    }
+};
+
+@connect((state) => {
     return {
-        visibilityFilter: store.visibilityFilter
+        todos: getVisibleTodos(state.todos, state.visibilityFilter)
     }
 })
 export default class Layout extends React.Component {
@@ -11,7 +23,7 @@ export default class Layout extends React.Component {
         return (
             <div>
                 <h1>Hello World!</h1>
-                <p>This is a react-redux-todo-app. {this.props.visibilityFilter}</p>
+                <p>This is a react-redux-todo-app. {this.props.todos}</p>
             </div>
         );
     }
