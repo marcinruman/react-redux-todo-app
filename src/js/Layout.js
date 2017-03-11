@@ -20,10 +20,18 @@ const getVisibleTodos = (todos, filter) => {
 })
 export default class Layout extends React.Component {
     render() {
+        const todos = this.props.todos.map(el => {
+            return <li>{el.text}</li>
+        });
+
         return (
             <div>
                 <h1>Hello World!</h1>
-                <p>This is a react-redux-todo-app. {this.props.todos}</p>
+                <p>This is a react-redux-todo-app.</p>
+
+                <ul>
+                    {todos}
+                </ul>
             </div>
         );
     }
