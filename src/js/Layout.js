@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
             return <li>{el.text}</li>
         });
 
-        console.log(this.props.todos);
+        console.log(todos);
 
         return (
             <div>
