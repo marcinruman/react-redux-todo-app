@@ -20,8 +20,8 @@ const getVisibleTodos = (todos, filter) => {
 })
 export default class Layout extends React.Component {
     render() {
-        const todos = this.props.todos.map(el => {
-            return <li>{el.text}</li>
+        const todos = this.props.todos.map((el, index) => {
+            return <li key={index}>{el.text} {index}</li>
         });
 
         console.log(todos);
