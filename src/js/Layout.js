@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import TodoList from "./components/TodoList";
 
 
 const getVisibleTodos = (todos, filter) => {
@@ -20,20 +21,13 @@ const getVisibleTodos = (todos, filter) => {
 })
 export default class Layout extends React.Component {
     render() {
-        const todos = this.props.todos.map((el, index) => {
-            return <li key={index}>{el.text} {index}</li>
-        });
-
-        console.log(todos);
 
         return (
             <div>
                 <h1>Hello World!</h1>
                 <p>This is a react-redux-todo-app.</p>
 
-                <ul>
-                    {todos}
-                </ul>
+                <TodoList todos={this.props.todos} />
             </div>
         );
     }
