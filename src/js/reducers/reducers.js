@@ -19,7 +19,7 @@ function todos(state = [], action) {
                 ...state,
                 {
                     text: action.text,
-                    completed: false
+                    completed: action.completed
                 }
             ];
         case TOGGLE_TODO:

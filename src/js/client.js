@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import Layout from "./Layout";
 import store from "./store";
 
-store.dispatch({ type: 'ADD_TODO', text: 'Buy eggs', completed: true });
+store.dispatch({ type: 'ADD_TODO', text: 'Buy eggs', completed: false });
 
 store.dispatch({ type: 'ADD_TODO', text: 'Buy milk', completed: true });
 
