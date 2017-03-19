@@ -9,11 +9,9 @@ store.dispatch({ type: 'ADD_TODO', text: 'Buy eggs', completed: false });
 
 store.dispatch({ type: 'ADD_TODO', text: 'Buy milk', completed: true });
 
-store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_COMPLETED' });
-
-store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' });
-
 store.dispatch({ type: 'ADD_TODO', text: 'Buy water', completed: false });
+
+store.dispatch({ type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ACTIVE' });
 
 const app = document.getElementById('app');
 
