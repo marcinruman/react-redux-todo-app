@@ -3,10 +3,6 @@ import Todo from './Todo';
 
 
 export default class TodoList extends React.Component {
-    onTodoClick(todoID) {
-        console.log('click');
-    }
-
     render() {
         return (
             <ul>
@@ -14,7 +10,7 @@ export default class TodoList extends React.Component {
                     <Todo
                         key={index}
                         {...todo}
-                        onClick={() => todo.props.onTodoClick(todo.id)}
+                        onClick={() => this.props.onTodoClick(index)}
                     />
                 )}
             </ul>

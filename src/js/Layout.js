@@ -20,10 +20,6 @@ const getVisibleTodos = (todos, filter) => {
     }
 })
 export default class Layout extends React.Component {
-    onTodoClick(todoID) {
-        store.toggleTodo(todoID);
-    }
-
     render() {
 
         return (
@@ -31,7 +27,7 @@ export default class Layout extends React.Component {
                 <h1>Hello World!</h1>
                 <p>This is a react-redux-todo-app.</p>
 
-                <TodoList todos={this.props.todos} onTodoClick={this.onTodoClick} />
+                <TodoList todos={this.props.todos} onTodoClick={this.props.onTodoClick} />
             </div>
         );
     }
