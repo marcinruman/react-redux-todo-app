@@ -1,7 +1,12 @@
 import React from "react";
 import Todo from './Todo';
 
+
 export default class TodoList extends React.Component {
+    onTodoClick(todoID) {
+        console.log('click');
+    }
+
     render() {
         return (
             <ul>
@@ -9,7 +14,7 @@ export default class TodoList extends React.Component {
                     <Todo
                         key={index}
                         {...todo}
-                        onClick={() => onTodoClick(todo.id)}
+                        onClick={() => todo.props.onTodoClick(todo.id)}
                     />
                 )}
             </ul>
